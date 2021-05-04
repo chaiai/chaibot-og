@@ -2,7 +2,7 @@
 
 set -e
 
-password='chai'
+password=''
 
 # Record the time this script starts
 date
@@ -85,7 +85,7 @@ jupyter lab --generate-config
 python3 -c "from notebook.auth.security import set_password; set_password('$password', '$HOME/.jupyter/jupyter_notebook_config.json')"
 
 # fix for permission error
-sudo chown -R chai:chai ~/.local/share/
+sudo chown -R $USER:$password ~/.local/share/
 
 # Install jupyter_clickable_image_widget
 echo "\e[42m Install jupyter_clickable_image_widget \e[0m"
