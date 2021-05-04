@@ -2,7 +2,7 @@
 
 set -e
 
-password='chai'
+password=''
 
 # Record the time this script starts
 date
