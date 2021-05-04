@@ -2,8 +2,12 @@
 
 My own tweaks for NVIDIA JetBot to run on a cheap RC car from Walmart: [New Bright RC 4X4 1:15 Bronco Rock Crawler](https://www.walmart.com/ip/New-Bright-RC-4x4-1-15-Scale-Radio-Control-Bronco-Rock-Crawler-2-4GHz/352947836)
 
-![image](https://user-images.githubusercontent.com/81446209/117052457-bdfe9b00-ace5-11eb-8b8c-7c743470bf13.png)
+<img src="https://user-images.githubusercontent.com/81446209/117052457-bdfe9b00-ace5-11eb-8b8c-7c743470bf13.png" alt="image" width="400"/>
 
+### Not done yet:
+- Editing the notebooks to match controls of new robot
+- Have not attempted to use any object following or TRT models yet
+  -  May need to go back to torch 1.6.0 
 
 # Bash script for installation
 
