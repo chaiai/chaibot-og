@@ -27,7 +27,7 @@ sudo bash -c 'echo "/var/swapfile swap swap defaults 0 0" >> /etc/fstab'
 
 # Install pip and some python dependencies
 echo -e "\e[104m Install pip and some python dependencies \e[0m"
-sudo apt-get update
+sudo apt update
 sudo apt install -y python3-pip python3-pil
 sudo -H pip3 install Cython
 sudo -H pip3 install --upgrade numpy
@@ -39,27 +39,27 @@ sudo -H pip3 install jetson-stats
 
 # Install the pre-built TensorFlow pip wheel
 echo -e "\e[48;5;202m Install the pre-built TensorFlow pip wheel \e[0m"
-sudo apt-get update
-sudo apt-get install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
-sudo apt-get install -y python3-pip
+sudo apt update
+sudo apt install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+sudo apt install -y python3-pip
 sudo pip3 install -U pip testresources setuptools numpy==1.16.1 future==0.17.1 mock==3.0.5 h5py==2.9.0 keras_preprocessing==1.0.5 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
 # TF-1.15
-sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 'tensorflow<2'
+sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 ‘tensorflow<2’
 
 # Install the pre-built PyTorch pip wheel 
 echo -e "\e[45m Install the pre-built PyTorch pip wheel  \e[0m"
 cd
-wget -N https://nvidia.box.com/shared/static/yr6sjswn25z7oankw8zy1roow9cy5ur1.whl -O torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
-sudo apt-get install -y python3-pip libopenblas-base libopenmpi-dev 
+wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+sudo apt install -y python3-pip libopenblas-base libopenmpi-dev 
 sudo -H pip3 install Cython
-sudo -H pip3 install numpy torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl 
+sudo -H pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl 
 
 # Install torchvision package
 echo -e "\e[45m Install torchvision package \e[0m"
 cd
-git clone https://github.com/pytorch/vision
-cd vision
-#git checkout v0.4.0
+git clone --branch v0.9.0 https://github.com/pytorch/vision torchvision
+cd torchvision
+export BUILD_VERSION=0.9.0
 sudo -H python3 setup.py install
 
 # Install torch2trt
@@ -101,46 +101,6 @@ sudo jupyter lab build
 # Install bokeh
 sudo pip3 install bokeh
 sudo jupyter labextension install @bokeh/jupyter_bokeh
-
-
-# install jetbot python module
-cd
-sudo apt install -y python3-smbus
-cd ~/jetbot
-sudo apt-get install -y cmake
-sudo python3 setup.py install 
-
-# Install jetbot services
-cd chaibot/utils
-python3 create_stats_service.py
-sudo mv chaibot_stats.service /etc/systemd/system/chaibot_stats.service
-sudo systemctl enable chaibot_stats
-sudo systemctl start chaibot_stats
-python3 create_jupyter_service.py
-sudo mv chaibot_jupyter.service /etc/systemd/system/chaibot_jupyter.service
-sudo systemctl enable chaibot_jupyter
-sudo systemctl start chaibot_jupyter
-
-
-# install python gst dependencies
-sudo apt-get install -y \
-    libwayland-egl1 \
-    gstreamer1.0-plugins-bad \
-    libgstreamer-plugins-bad1.0-0 \
-    gstreamer1.0-plugins-good \
-    python3-gst-1.0
-    
-# install zmq dependency (should actually already be resolved by jupyter)
-sudo -H pip3 install pyzmq
-    
-
-# Optimize the system configuration to create more headroom
-sudo nvpmodel -m 0
-sudo systemctl set-default multi-user
-sudo systemctl disable nvzramconfig.service
-
-# Copy JetBot notebooks to home directory
-cp -r ~/chaibot/notebooks ~/Notebooks
 
 echo -e "\e[42m All done! \e[0m"
 
