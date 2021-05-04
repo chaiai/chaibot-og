@@ -6,13 +6,19 @@ This script is the first half of the JetBot repo's script to create an SD card i
 
 I added small tweaks, such as installing update Torch and Torchvision packages
 
+<code>
 cd chaibot
+
 ./scripts/sd_card_setup.sh
+</code>
 
 ## Step 2: Install ChaiBot
 
+<code>
 cd chaibot
+  
 ./scripts/create_chaibot.sh
+</code>
 
 ## Additional scripts from JetBot
 
