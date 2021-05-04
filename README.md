@@ -42,6 +42,14 @@ cd chaibot
 ./scripts/create_chaibot.sh
 </code>
 
+## Connecting to ChaiBot
+
+On another computer, enter the IP address of the Jetson followed by ":8888"
+
+For example: 192.168.1.123:8888
+
+Enter the password for the Jetson and you will have access to the Home directory
+
 ## Additional scripts from JetBot
 
 - re-enable-gui.sh will turn the desktop back on if you connect to a display upon next boot.
