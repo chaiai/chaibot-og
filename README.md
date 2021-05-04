@@ -9,6 +9,15 @@ My own tweaks for NVIDIA JetBot to run on a cheap RC car from Walmart: [New Brig
 - Have not attempted to use any object following or TRT models yet
   -  May need to go back to torch 1.6.0 
 
+# Pre-installation steps
+
+1. Flash JetPack 4.5.1 image to SD card
+2. Go through OEM installation with a monitor, mouse and keyboard attached (important for expanding SD card app directory from 14 GB to the full capacity of the SD card)
+3. perform sudo apt update / sudo apt full-upgrade
+4. git clone https://github.com/chaiai/chaibot.git
+
+Once you are connected to your local network and have the IP address (ifconfig from Terminal of Jetson), you can do the following steps with the Jetson directly with the monitor attached, or SSH into your Nano via a suitable client (most OS, including Windows now, have SSH built in to their terminal/command prompt) via <code>ssh username@123.456.1.123 [IP address of the Jetson]</code>
+
 # Bash script for installation
 
 **NOTE: You need to edit the files and enter your password in the top of each of the scripts below to make the script run as I did.**
