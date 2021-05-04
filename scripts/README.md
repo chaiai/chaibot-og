@@ -1,5 +1,7 @@
 # Bash script for installation
 
+**NOTE: You need to edit the files and enter your password in the top of each of the scripts below to make the script run as I did.**
+
 ## Step 1: Install JetBot dependencies
 
 This script is the first half of the JetBot repo's script to create an SD card image from scratch.
