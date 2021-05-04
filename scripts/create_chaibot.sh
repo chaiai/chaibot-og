@@ -2,6 +2,9 @@
 
 set -e
 
+#######################
+# ENTER PASSWORD HERE #
+#######################
 password=''
 
 # Record the time this script starts
