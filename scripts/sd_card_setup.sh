@@ -79,10 +79,21 @@ sudo python3 -m pip install git+https://github.com/ipython/traitlets@dead2b8cdde
 # Install jupyter lab
 echo -e "\e[48;5;172m Install Jupyter Lab \e[0m"
 sudo apt install -y curl
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - # Needs to be 12.0 for Jupyterlab extensions
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install -y nodejs libffi-dev 
 sudo -H pip3 install jupyter jupyterlab
 sudo -H jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+cd #reach home directory
+sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
+sudo apt-get install npm #likely already installed, but it does no harm
+git clone https://github.com/jaybdub/jupyter_clickable_image_widget
+cd jupyter_clickable_image_widget
+git checkout no_typescript
+sudo python3 setup.py build #TB modified, takes a long time >30 min
+sudo pip3 install -e .
+sudo jupyter labextension install js
+sudo jupyter lab build
 
 jupyter lab --generate-config
 python3 -c "from notebook.auth.security import set_password; set_password('$password', '$HOME/.jupyter/jupyter_notebook_config.json')"
