@@ -42,7 +42,7 @@ class WanderApplication(traitlets.HasTraits):
         if prob_blocked < 0.5:
             self.robot.forward(0.4)
         else:
-            self.robot.left(0.4)
+            self.robot.back_left(0.4)
     
     def start(self):
         self.device = torch.device('cuda')
