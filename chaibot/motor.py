@@ -25,32 +25,13 @@ class Motor(Configurable):
         #    self._inb = 3
         atexit.register(self._release)
         
-    @traitlets.observe('throttle')
-    def _observe_throttle(self, change):
-        self._write_throttle(change['new'])
-
-    def _write_throttle(self, throttle):
+    @traitlets.observe('value')
+    def _observe_value(self, change):
+        self._write_value(change['new'])
+        
+    def _write_value(self, value):
         """Sets motor value between [-1, 1]"""
-        mapped_value = int(255.0 * (self.alpha * throttle + self.beta))
-        speed = min(max(abs(mapped_value), 0), 255)
-        self._motor.setSpeed(speed)
-        if mapped_value < 0:
-            self._motor.run(Adafruit_MotorHAT.FORWARD)
-            # The two lines below are required for the Waveshare JetBot Board only
-            # self._driver._pwm.setPWM(self._ina,0,0)
-            # self._driver._pwm.setPWM(self._inb,0,speed*16)
-        else:
-            self._motor.run(Adafruit_MotorHAT.BACKWARD)
-            # The two lines below are required for the Waveshare JetBot Board only
-            # self._driver._pwm.setPWM(self._ina,0,speed*16)
-            # self._driver._pwm.setPWM(self._inb,0,0)
-
-    @traitlets.observe('steering')
-    def _observe_steering(self, change):
-        self._write_steering(change['new'])
-
-    def _write_steering(self, steering):
-        mapped_value = int(255.0 * (self.alpha * steering + self.beta))
+        mapped_value = int(255.0 * (self.alpha * value + self.beta))
         speed = min(max(abs(mapped_value), 0), 255)
         self._motor.setSpeed(speed)
         if mapped_value < 0:
