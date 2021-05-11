@@ -2,7 +2,6 @@ import time
 import traitlets
 from traitlets.config.configurable import SingletonConfigurable
 from Adafruit_MotorHAT import Adafruit_MotorHAT
-#from adafruit_motorkit import MotorKit
 from .motor import Motor
 
 
@@ -11,6 +10,7 @@ class Robot(SingletonConfigurable):
     front_motor = traitlets.Instance(Motor)
     rear_motor = traitlets.Instance(Motor)
     steering_motor = traitlets.Instance(Motor)
+    extra_motor = traitlets.Instance(Motor)
 
     # config
     i2c_bus = traitlets.Integer(default_value=0).tag(config=True)
