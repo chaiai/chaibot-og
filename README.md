@@ -4,10 +4,18 @@ My own tweaks for NVIDIA JetBot to run on a cheap RC car from Walmart: [New Brig
 
 <img src="https://user-images.githubusercontent.com/81446209/117052457-bdfe9b00-ace5-11eb-8b8c-7c743470bf13.png" alt="image" width="400"/>
 
+## Actual steps I followed:
+
+1. Installed jetson-inference (with PyTorch/torchTRT/some pre-downloaded models)
+2. Installed Jupyter and other packages from NVIDIA-AI-IOT/jetcard/install.sh
+3. Started Chaibot services:
+  - chaibot_stats via utils/create_stats_service.py
+  - chaibot_jupyter via utils/create_jupyter_service.py
+4. Gave user permissions to I2C group: <code>sudo usermod -aG i2c $USER</code>
+
 ### Not done yet:
 - Editing the notebooks to match controls of new robot
 - Have not attempted to use any object following or TRT models yet
-  -  May need to go back to torch 1.6.0 
 
 # Pre-installation steps
 
