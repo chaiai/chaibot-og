@@ -4,6 +4,8 @@ My own tweaks for NVIDIA JetBot to run on a cheap RC car from Walmart: [New Brig
 
 <img src="https://user-images.githubusercontent.com/81446209/117052457-bdfe9b00-ace5-11eb-8b8c-7c743470bf13.png" alt="image" width="400"/>
 
+[Hardware setup coming soon!]
+
 ## Actual steps I followed:
 
 1. Installed jetson-inference (with PyTorch/torchTRT/some pre-downloaded models)
@@ -15,6 +17,11 @@ My own tweaks for NVIDIA JetBot to run on a cheap RC car from Walmart: [New Brig
 
 ### Not done yet:
 - Editing the notebooks to match controls of new robot
+- XBox One controller teleoperation
+- Ultrasonic/LiDAR sensors for distance
+    - LiDAR can go in I2C bus 1 with the PiOLED
+- Arduino UNO with Sensor Shield v5 for servo motor control (and ultrasonic module)
+    - needs seperate power supply if using more than 1-2 servos
 - Have not attempted to use any object following or TRT models yet
 
 # Pre-installation steps
