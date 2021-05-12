@@ -19,6 +19,8 @@ My own tweaks for NVIDIA JetBot to run on a cheap RC car from Walmart: [New Brig
 
 ### Not done yet:
 - Editing the notebooks to match controls of new robot
+  - **added ChaibotController.py for an easier navigation widget**
+  - **trained avoidance model with torchTRT**
 - XBox One controller teleoperation
 - Ultrasonic/LiDAR sensors for distance
     - LiDAR can go in I2C bus 1 with the PiOLED
