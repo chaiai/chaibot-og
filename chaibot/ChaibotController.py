@@ -52,6 +52,8 @@ forward_button = widgets.Button(description='forward', layout=button_layout)
 backward_button = widgets.Button(description='backward', layout=button_layout)
 left_button = widgets.Button(description='left', layout=button_layout)
 right_button = widgets.Button(description='right', layout=button_layout)
+back_left_button = widgets.Button(description='back left', layout=button_layout)
+back_right_button = widgets.Button(description='back right', layout=button_layout)
 
 # Snapshot buttons
 snapshot_button = widgets.Button(description='Snapshot', button_style='success', layout=button_layout)
@@ -59,7 +61,8 @@ snapshot_count = widgets.IntText(layout=button_layout, value=len(os.listdir(snap
 
 # display buttons
 middle_box = widgets.HBox([left_button, stop_button, right_button], layout=widgets.Layout(align_self='center'))
-controls_box = widgets.VBox([forward_button, middle_box, backward_button])
+bottom_box = widgets.HBox([back_left_button, backward_button, back_right_button], layout=widgets.Layout(align_self='center'))
+controls_box = widgets.VBox([forward_button, middle_box, bottom_box])
 
 # Motor control functions
 def stop(change):
@@ -84,6 +87,12 @@ def step_right(change):
     robot.steer_right(0.5)
     #time.sleep(1.0)
     #robot.stop()
+    
+def back_left(change):
+    robot.back_left(0.5)
+    
+def back_right(change):
+    robot.back_right(0.5)
 
 # Snapshot functions
 def save_snapshot(directory):
@@ -103,6 +112,8 @@ forward_button.on_click(step_forward)
 backward_button.on_click(step_backward)
 left_button.on_click(step_left)
 right_button.on_click(step_right)
+back_left_button.on_click(back_left)
+back_right_button.on_click(back_right)
 snapshot_button.on_click(lambda x: take_snapshot())
 
 
