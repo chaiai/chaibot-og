@@ -2,9 +2,10 @@
 # Most widgets come from the NVIDIA JetBot example Notebooks.
 # My implementation creates a widget view for a Notebook with:
 #
-# 1. Camera instance
-# 2. Motor controls (set to 0.5 speed and without time calls, so the stop button needs to be pressed to stop)
-# 3. Snapshot button (also creates a snapshot directory at chaibot/snapshots
+# 1. Camera instance (600x600 view)
+# 2. Motor controls (set to 0.5 speed and without time calls, so the stop button 
+#                    needs to be pressed to stop the robot)
+# 3. Snapshot button (also creates a snapshot directory at chaibot/snapshots)
 # 4. Heartbeat and Period sliders
 #
 # Call in Notebook via "from ChaibotController import Controller, camera"
