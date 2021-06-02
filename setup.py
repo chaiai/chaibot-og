@@ -18,7 +18,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Adafruit_MotorHAT',
-        'adafruit_motorkit',
         'Adafruit-SSD1306',
     ],
     package_data={'chaibot': ['ssd_tensorrt/*.so']},
